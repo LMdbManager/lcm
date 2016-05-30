@@ -25,7 +25,10 @@ class ImportTeilnehmer
     "Telefon Privat"  => "phone_private",
     "Telefon Arbeit"  => "phone_work",
     "Telefon Mobil"   => "phone_mobile",
-    "EMail" => "email"
+    "EMail" => "email",
+    "Region" => "region",
+    "OOA ES" => "ooa_es",
+    "OOA Sem" => "ooa_sem"
   }
 
   def self.read(event, import)
@@ -111,7 +114,7 @@ class ImportTeilnehmer
     lastname = row["Nachname"] || row["Name"]
     firstname = row["Vorname"]
     country = row["Land"]
-    country = "DE" if country = "D"
+    country = "DE" if country == "D"
 
     query = Person.where(country: country).where(lastname: lastname).where(firstname: firstname)
                   .where(zip: row["PLZ"])
