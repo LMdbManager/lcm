@@ -11,9 +11,9 @@ class ExportAssignments
     XlsxExport.process xls_workbook, "Assignments",
       PersonEventAssignment
         .joins(:person, :event)
-        .order("eid, pid")
-        .select("person_event_assignments.* ,pid,eid,shortname"),
-      MAPPING
+        .order("events.id, people.id")
+        .select("person_event_assignments.* ,people.id as pid,events.id as eid,shortname"),
+      MAPPING.invert
   end
 
 end

@@ -1,9 +1,10 @@
 class ExportAttendees
   require 'xlsx_export'
 
+  SHEET_ATTENDEES = "Attendees"
+
   MAPPING = {
       "pID" => "id",
-      "Kommentar / wichtige Info" => "notes",
       "Status" => "state",
       "Datum" => "date",
       "Nachname" => "lastname",
@@ -23,13 +24,16 @@ class ExportAttendees
       "OOA FRK" => "ooa_es",
       "OOA Semr" => "ooa_sem",
       "eMail" => "email",
-      "Zuordnung" => "code"
+      "Zuordnung" => "code",
+      "Kommentar / wichtige Info" => "notes"
     }
 
   def self.process(xls_workbook)
-    XlsxExport.process xls_workbook, "Attendees",
-      Person.joins("LEFT JOIN regions ON regions.id = people.region_id").order("lastname, firstname").select("*"),
-      MAPPING
+    XlsxExport.process xls_workbook, SHEET_ATTENDEES,
+      Person.joins("LEFT JOIN regions ON regions.id = people.region_id")
+            .order("lastname, firstname")
+            .select("people.*, regions.code"),
+      MAPPING.invert
   end
 
 end

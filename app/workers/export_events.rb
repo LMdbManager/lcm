@@ -1,8 +1,10 @@
 class ExportEvents
   require 'xlsx_export'
 
+  SHEET_EVENTS = "Events"
+
   MAPPING = {
-    'eID' => 'eid',
+    'eID' => 'id',
     'eName' => 'shortname',
     'eBeschreibung' => 'title',
     'eOrt' => 'city',
@@ -10,9 +12,9 @@ class ExportEvents
   }
 
   def self.process(xls_workbook)
-    XlsxExport.process xls_workbook, "Events",
-      Event.joins(:location).order("eid").select("*"),
-      MAPPING
+    XlsxExport.process xls_workbook, SHEET_EVENTS,
+      Event.joins(:location).order("events.id").select("*"),
+      MAPPING.invert
   end
 
 end
