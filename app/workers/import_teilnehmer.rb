@@ -86,7 +86,7 @@ class ImportTeilnehmer
   def find_person(row)
     pid=row["PID"].to_i
     if pid > 0
-      if p = Person.where(pid: pid).first
+      if p = Person.where(id: pid).first
         return p
       end
     end
