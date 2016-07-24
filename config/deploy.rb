@@ -2,11 +2,11 @@
 lock '3.5.0'
 
 set :application, 'lcm'
-set :repo_url, 'git@github.com:thieso2/lcm.git'
+set :repo_url, 'git@github.com:LMdbManager/lcm.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-set :branch, "integration/capistrano"
+# set :branch, "integration/capistrano"
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, '/var/www/htdocs/webs/web6/home/files/rails/lcm'

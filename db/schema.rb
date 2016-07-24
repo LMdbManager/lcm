@@ -118,9 +118,9 @@ ActiveRecord::Schema.define(version: 20160321193610) do
     t.string  "phone_work",     limit: 255
     t.string  "phone_mobile",   limit: 255
     t.text    "notes",          limit: 65535
-    t.boolean "do_not_contact",               default: false
-    t.boolean "ooa_es",                       default: false
-    t.boolean "ooa_sem",                      default: false
+    t.boolean "do_not_contact"
+    t.boolean "ooa_es"
+    t.boolean "ooa_sem"
   end
 
   create_table "person_event_assignments", force: :cascade do |t|
@@ -223,7 +223,6 @@ ActiveRecord::Schema.define(version: 20160321193610) do
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
-  add_foreign_key "calls", "people", column: "caller_id"
   add_foreign_key "events", "event_types"
   add_foreign_key "events", "locations"
   add_foreign_key "person_event_assignments", "event_role_types"

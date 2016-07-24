@@ -113,10 +113,15 @@ PersonTeamAssignment.create!(person: klaus, team: assistance, team_role_type: rl
 Report.create!(
   name: 'POT Frankfurt',
   url_name: 'pot_frankfurt',
-  description: 'Alle Teilnehmer die mindestens entweder FGK und ein Seminar oder zwei Seminare gemacht haben'
+  description: 'Alle Teilnehmer, die mindestens entweder FGK und ein Seminar oder zwei Seminare gemacht haben'
 )
 Report.create!(
   name: 'Absolventen FGK',
   url_name: 'absolventen_fgk',
-  description: 'Alle Absolventen die an einem FGK teilgenommen haben.'
+  description: 'Alle Absolventen, die an einem FGK teilgenommen haben.'
+)
+Report.create!(
+  name: 'POT CPC',
+  url_name: 'pot_cpc',
+  description: 'Alle Absolventen, die an einem CAP und keinem CPC teilgenommen haben.'
 )
